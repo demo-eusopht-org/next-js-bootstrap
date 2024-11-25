@@ -1,0 +1,24 @@
+// Variables
+$primary-color: #0077b5;
+$secondary-color: #0095d7;
+
+// Gradient Background
+.bg-gradient {
+  background-image: linear-gradient(to bottom right, $primary-color, $secondary-color);
+}
+
+// Progress Bar card1s
+.card1 {
+  min-width: 20rem;
+  max-width: 20rem;
+  z-index: 50;
+  background-image: linear-gradient(to bottom right, $primary-color, $secondary-color);
+
+}
+
+// Secure Section Steps
+.secure-step {
+  font-size: 1rem;
+  color: $primary-color;
+  opacity: 0.2;
+}

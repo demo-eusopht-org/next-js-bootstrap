@@ -1,0 +1,24 @@
+// _card.scss
+
+.card {
+    // background-color: rgba(233, 235, 237, 0.4); // Matches Tailwind's bg-[#E9EBED66]
+    background-color: rgba(16, 124, 232, 0.4); // Matches Tailwind's bg-[#E9EBED66]
+    border-radius: 1.5rem; // Matches Tailwind's rounded-3xl
+  
+    .btn-outline-primary {
+      border-color: #0077b5;
+      color: #0077b5;
+  
+      &:hover {
+        background-color: #0077b5;
+        color: white;
+      }
+    }
+  
+    img {
+      max-height: 15rem; // Matches Tailwind's sm:h-[15rem]
+      object-fit: cover;
+    }
+  }
+  
+

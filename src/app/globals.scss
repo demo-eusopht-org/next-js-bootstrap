@@ -1,0 +1,1630 @@
+// custom.scss
+@import "~bootstrap/scss/bootstrap";
+// @import "./../components/card";
+// @import "./../components/Footer.scss";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/utilities";
+// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "../../node_modules/bootstrap/scss/utilities/api";
+// @import "../../node_modules/bootstrap/scss/utilities";
+// @import "../../node_modules/bootstrap/scss/bootstrap-utilities.scss";
+// @import "../../node_modules/bootstrap/scss/functions";
+// @import "../../node_modules/bootstrap/scss/variables";
+
+$primary: #0077b5;
+$secondary-color: #fff;
+$background-dark: #07132d;
+$light-color: #f6f7f8;
+
+:root {
+  --font-work-sans: "Work Sans", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+// body {
+//   // font-family: var(--font-work-sans), var(--font-inter), sans-serif;
+// }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Sidebar transition styles
+.sidebar {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+// Root Variables
+:root {
+  --font-work-sans: "Work Sans", sans-serif;
+  // --font-inter: "Inter", sans-serif;
+}
+
+// Base Styles
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-work-sans);
+}
+
+// Utility Classes
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$font-family-work-sans: "Work Sans", sans-serif !default;
+$font-family-inter: "Inter", sans-serif !default;
+$font-family-montserrat: "Montserrat", sans-serif !default;
+
+/* Example Usage */
+.work-sans {
+  font-family: $font-family-work-sans !important;
+}
+
+.inter {
+  font-family: $font-family-inter !important;
+}
+.montserrat {
+  font-family: $font-family-montserrat !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+.fw-600 {
+  font-weight: 600 !important;
+}
+.fw-700 {
+  font-weight: 700 !important;
+}
+.fw-800 {
+  font-weight: 800 !important;
+}
+.fw-900 {
+  font-weight: 900 !important;
+}
+
+.fs-38 {
+  font-size: 2.375rem !important;
+}
+.fs-20 {
+  font-size: 1.25rem !important;
+}
+.fs-22 {
+  font-size: 1.375rem !important;
+}
+.fs-24 {
+  font-size: 1.5rem !important;
+}
+.fs-28 {
+  font-size: 1.75rem !important;
+}
+
+.fs-50 {
+  font-size: 3.125rem !important;
+}
+.fs-105 {
+  font-size: 6.563rem !important;
+}
+
+.text-tech {
+  color: #212833 !important;
+  font-size: 1.125rem;
+}
+$utilities: map-merge(
+  $utilities,
+  (
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      responsive: true,
+      values: auto pointer grab,
+    ),
+  )
+);
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.min-w-250 {
+  min-width: 15.625rem;
+}
+
+// *************************************************************** tw Border Classes ***************************************
+
+// Border Widths
+$border-widths: (
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px,
+);
+
+@mixin tw-border-width($size) {
+  border-width: map-get($border-widths, $size);
+}
+
+// Default border (1px) and loop for other border widths
+.tw-border {
+  @include tw-border-width(1px); // Default border width of 1px
+}
+
+@each $size, $width in $border-widths {
+  .tw-border-#{$size} {
+    @include tw-border-width($size);
+  }
+}
+
+// Border Colors
+$border-colors: (
+  transparent: transparent,
+  current: currentColor,
+  black: #000,
+  white: #fff,
+  gray-500: #6b7280,
+  red-500: #ef4444,
+  blue-500: #3b82f6,
+);
+
+@mixin tw-border-color($color) {
+  border-color: map-get($border-colors, $color);
+}
+
+// Loop for generating border color classes
+@each $color, $value in $border-colors {
+  .tw-border-#{$color} {
+    @include tw-border-color($color);
+  }
+}
+
+// Border Styles
+$border-styles: solid, dashed, dotted, double, none;
+
+@mixin tw-border-style($style) {
+  border-style: $style;
+}
+
+// Loop for generating border style classes
+@each $style in $border-styles {
+  .tw-border-#{$style} {
+    @include tw-border-style($style);
+  }
+}
+
+// Border Radius
+$border-radius: (
+  sm: 0.125rem,
+  md: 0.375rem,
+  lg: 0.5rem,
+  xl: 0.75rem,
+  2xl: 1rem,
+  3xl: 1.5rem,
+  full: 9999px,
+  none: 0,
+);
+
+@mixin tw-border-radius($size) {
+  border-radius: map-get($border-radius, $size);
+}
+
+// Loop for generating rounded classes
+.tw-rounded {
+  @include tw-border-radius(sm);
+}
+
+@each $size, $radius in $border-radius {
+  .tw-rounded-#{$size} {
+    @include tw-border-radius($size);
+  }
+}
+
+// Table Borders
+.table-border-collapse {
+  border-collapse: collapse;
+}
+
+.table-border-separate {
+  border-collapse: separate;
+}
+
+// Border Side Specific (top, right, bottom, left)
+@mixin tw-border-side($side, $width) {
+  border-#{$side}: $width solid currentColor;
+}
+
+// Loop for generating border-side classes (default 1px)
+@each $side in top, right, bottom, left {
+  .tw-border-#{$side} {
+    @include tw-border-side($side, 1px);
+  }
+}
+
+// Loop for generating border-side classes with different widths
+@each $side in top, right, bottom, left {
+  .tw-border-#{$side}-2 {
+    @include tw-border-side($side, 2px);
+  }
+
+  .tw-border-#{$side}-4 {
+    @include tw-border-side($side, 4px);
+  }
+
+  .tw-border-#{$side}-8 {
+    @include tw-border-side($side, 8px);
+  }
+}
+
+// *************************************************************** tw Outline Classes **********************************
+
+// Outline Widths
+$outlines-widths: (
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px,
+);
+
+@mixin tw-outline-width($size) {
+  outline-width: map-get($outlines-widths, $size);
+}
+
+.tw-outline {
+  @include tw-outline-width(2); // Default outline width of 2px
+}
+
+@each $size, $width in $outlines-widths {
+  .tw-outline-#{$size} {
+    @include tw-outline-width($size);
+  }
+}
+
+// Outline Colors
+$outlines-colors: (
+  transparent: transparent,
+  current: currentColor,
+  black: #000,
+  white: #fff,
+  gray-500: #6b7280,
+  red-500: #ef4444,
+  green-500: #10b981,
+  blue-500: #3b82f6,
+);
+
+@mixin tw-outline-color($color) {
+  outline-color: map-get($outlines-colors, $color);
+}
+
+@each $color, $value in $outlines-colors {
+  .tw-outline-#{$color} {
+    @include tw-outline-color($color);
+  }
+}
+
+// Outline Offset
+$outline-offsets: (
+  0: 0px,
+  1: 1px,
+  2: 2px,
+);
+
+@mixin tw-outline-offset($size) {
+  outline-offset: map-get($outline-offsets, $size);
+}
+
+@each $size, $offset in $outline-offsets {
+  .tw-outline-offset-#{$size} {
+    @include tw-outline-offset($size);
+  }
+}
+
+// Outline Style (Tailwind's `outline-none` and `outline-auto`)
+@mixin tw-outline-style($style) {
+  outline-style: $style;
+}
+
+.tw-outline-none {
+  outline: none;
+}
+
+.tw-outline-auto {
+  outline: auto;
+}
+
+// *************************************************************** TW TEXT CLASSES ***************************************
+
+// Define font families
+$tw-fonts: (
+  sans: "Sans-serif",
+  serif: "Serif",
+  mono: "Monospace",
+);
+
+// Define font sizes
+$tw-font-sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  2xl: 1.5rem,
+  3xl: 1.875rem,
+  4xl: 2.25rem,
+  5xl: 3rem,
+  6xl: 3.75rem,
+  7xl: 4.5rem,
+  8xl: 6rem,
+);
+
+// Define font weights
+$tw-font-weights: (
+  hairline: 100,
+  thin: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900,
+);
+
+// Define line heights
+$tw-line-heights: (
+  none: 1,
+  tight: 1.25,
+  snug: 1.375,
+  normal: 1.5,
+  relaxed: 1.625,
+  loose: 2,
+);
+
+// Define text colors
+$tw-text-colors: (
+  black: #000000,
+  white: #ffffff,
+  gray-100: #f7fafc,
+  gray-200: #edf2f7,
+  gray-300: #e2e8f0,
+  gray-400: #cbd5e0,
+  gray-500: #a0aec0,
+  gray-600: #718096,
+  gray-700: #4a5568,
+  gray-800: #2d3748,
+  gray-900: #1a202c,
+  red-500: #f56565,
+  yellow-500: #ecc94b,
+  green-500: #48bb78,
+  blue-500: #4299e1,
+  indigo-500: #667eea,
+  purple-500: #9f7aea,
+  pink-500: #ed64a6,
+);
+
+// Define text transformations
+$tw-text-transform: (
+  uppercase: uppercase,
+  lowercase: lowercase,
+  capitalize: capitalize,
+  normal: none,
+);
+
+// Define letter spacing
+$tw-letter-spacing: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em,
+);
+
+// Mixin for Text Size
+@mixin tw-text-size($size) {
+  font-size: map-get($tw-font-sizes, $size);
+}
+
+// Mixin for Font Weight
+@mixin tw-font-weight($weight) {
+  font-weight: map-get($tw-font-weights, $weight);
+}
+
+// Mixin for Line Height
+@mixin tw-line-height($line) {
+  line-height: map-get($tw-line-heights, $line);
+}
+
+// Mixin for Text Color
+@mixin tw-text-color($color) {
+  color: map-get($tw-text-colors, $color);
+}
+
+// Mixin for Text Transform
+@mixin tw-text-transform($transform) {
+  text-transform: map-get($tw-text-transform, $transform);
+}
+
+// Mixin for Letter Spacing
+@mixin tw-letter-spacing($spacing) {
+  letter-spacing: map-get($tw-letter-spacing, $spacing);
+}
+
+// Generate Text Utilities for Font Sizes
+@each $size, $value in $tw-font-sizes {
+  .tw-text-#{$size} {
+    @include tw-text-size($size);
+  }
+}
+
+// Generate Font Weight Utilities
+@each $weight, $value in $tw-font-weights {
+  .tw-font-#{$weight} {
+    @include tw-font-weight($weight);
+  }
+}
+
+// Generate Line Height Utilities
+@each $line, $value in $tw-line-heights {
+  .tw-leading-#{$line} {
+    @include tw-line-height($line);
+  }
+}
+
+// Generate Text Color Utilities
+@each $color, $value in $tw-text-colors {
+  .tw-text-#{$color} {
+    @include tw-text-color($color);
+  }
+}
+
+// Generate Text Transform Utilities
+@each $transform, $value in $tw-text-transform {
+  .tw-uppercase {
+    @include tw-text-transform(uppercase);
+  }
+  .tw-lowercase {
+    @include tw-text-transform(lowercase);
+  }
+  .tw-capitalize {
+    @include tw-text-transform(capitalize);
+  }
+  .tw-normal-case {
+    @include tw-text-transform(normal);
+  }
+}
+
+// Generate Letter Spacing Utilities
+@each $spacing, $value in $tw-letter-spacing {
+  .tw-tracking-#{$spacing} {
+    @include tw-letter-spacing($spacing);
+  }
+}
+
+// *************************************************************** TW WIDTH CLASSES ***************************************
+// Define width values
+$tw-values: (
+  auto: auto,
+  full: 100%,
+  screen: 100vw,
+  f: fit-content,
+  1/2: 50%,
+  1/3: 33.3333333%,
+  2/3: 66.6666666%,
+  1/4: 25%,
+  3/4: 75%,
+  1/5: 20%,
+  2/5: 40%,
+  3/5: 60%,
+  4/5: 80%,
+  1/6: 16.6666666%,
+  5/6: 83.3333333%,
+  1/12: 8.3333333%,
+  5/12: 41.6666666%,
+  7/12: 58.3333333%,
+  11/12: 91.6666666%,
+
+  // Fixed widths (rem-based)
+  96: 24rem,
+  72: 18rem,
+  64: 16rem,
+  56: 14rem,
+  48: 12rem,
+  40: 10rem,
+  32: 8rem,
+  24: 6rem,
+  20: 5rem,
+  // New fixed width 5rem
+  18: 4.5rem,
+  // New fixed width 4.5rem
+  16: 4rem,
+  // New fixed width 4rem
+  14: 3.5rem,
+  // New fixed width 3.5rem
+  12: 3rem,
+  // New fixed width 3rem
+  10: 2.5rem,
+  // New fixed width 2.5rem
+  8: 2rem,
+  // New fixed width 2rem
+  6: 1.5rem,
+  // 24px
+  5: 1.25rem,
+  // 20px
+  4: 1rem,
+  // 16px
+  3: 0.75rem,
+  // 12px
+  2-5: 0.625rem,
+  // 10px
+  2: 0.5rem,
+  // 8px
+  1.5: 0.375rem,
+  // 6px
+  1: 0.25rem,
+  // 4px
+  0-5: 0.125rem,
+  // 2px
+  0: 0px,
+
+  // Expanded .5rem step widths (from 6rem to 24rem)
+  6.5: 1.625rem,
+  // 1.625rem
+  7: 1.75rem,
+  // 1.75rem
+  7.5: 1.875rem,
+  // 1.875rem
+  8.5: 2.125rem,
+  // 2.125rem
+  9: 2.25rem,
+  // 2.25rem
+  9.5: 2.375rem,
+  // 2.375rem
+  10.5: 2.625rem,
+  // 2.625rem
+  11.5: 2.875rem,
+  // 2.875rem
+  12.5: 3.125rem,
+  // 3.125rem
+  13.5: 3.375rem,
+  // 3.375rem
+  14.5: 3.625rem,
+  // 3.625rem
+  15.5: 3.875rem,
+  // 3.875rem
+  16.5: 4.125rem,
+  // 4.125rem
+  17.5: 4.375rem,
+  // 4.375rem
+  18.5: 4.625rem,
+  // 4.625rem
+  19.5: 4.875rem,
+  // 4.875rem
+  20.5: 5.125rem,
+  // 5.125rem
+  21.5: 5.375rem,
+  // 5.375rem
+  22.5: 5.625rem,
+  // 5.625rem
+  23.5: 5.875rem,
+  // 5.875rem
+  25: 6.25rem,
+  // 6.25rem
+  26: 6.5rem,
+  // 6.5rem
+  27: 6.75rem,
+  // 6.75rem
+  28: 7rem,
+  // 7rem
+  29: 7.25rem,
+  // 7.25rem
+  30: 7.5rem,
+  // 7.5rem
+  31: 7.75rem,
+  // 7.75rem
+  32.5: 8.125rem,
+  // 8.125rem
+  33: 8.25rem,
+  // 8.25rem
+  34: 8.5rem,
+  // 8.5rem
+  35: 8.75rem,
+  // 8.75rem
+  36: 9rem,
+  // 9rem
+  37: 9.25rem,
+  // 9.25rem
+  38: 9.5rem,
+  // 9.5rem
+  39: 9.75rem,
+  // 9.75rem
+  41: 10.25rem,
+  // 10.25rem
+  42: 10.5rem,
+  // 10.5rem
+  43: 10.75rem,
+  // 10.75rem
+  44: 11rem,
+  // 11rem
+  45: 11.25rem,
+  // 11.25rem
+  46: 11.5rem,
+  // 11.5rem
+  47: 11.75rem,
+  // 11.75rem
+  49: 12.25rem,
+  // 12.25rem
+  50: 12.5rem,
+  // 12.5rem
+  51: 12.75rem,
+  // 12.75rem
+  52: 13rem,
+  // 13rem
+  53: 13.25rem,
+  // 13.25rem
+  54: 13.5rem,
+  // 13.5rem
+  55: 13.75rem,
+  // 13.75rem
+  57: 14.25rem,
+  // 14.25rem
+  58: 14.5rem,
+  // 14.5rem
+  59: 14.75rem,
+  // 14.75rem
+  60: 15rem,
+  // 15rem
+  61: 15.25rem,
+  // 15.25rem
+  62: 15.5rem,
+  // 15.5rem
+  63: 15.75rem,
+  // 15.75rem
+  65: 16.25rem,
+  // 16.25rem
+  66: 16.5rem,
+  // 16.5rem
+  67: 16.75rem,
+  // 16.75rem
+  68: 17rem,
+  // 17rem
+  69: 17.25rem,
+  // 17.25rem
+  70: 17.5rem,
+  // 17.5rem
+  71: 17.75rem,
+  // 17.75rem
+  73: 18.25rem,
+  // 18.25rem
+  74: 18.5rem,
+  // 18.5rem
+  75: 18.75rem,
+  // 18.75rem
+  76: 19rem,
+  // 19rem
+  77: 19.25rem,
+  // 19.25rem
+  78: 19.5rem,
+  // 19.5rem
+  79: 19.75rem,
+  // 19.75rem
+  81: 20.25rem,
+  // 20.25rem
+  82: 20.5rem,
+  // 20.5rem
+  83: 20.75rem,
+  // 20.75rem
+  84: 21rem,
+  // 21rem
+  85: 21.25rem,
+  // 21.25rem
+  86: 21.5rem,
+  // 21.5rem
+  87: 21.75rem,
+  // 21.75rem
+  89: 22.25rem,
+  // 22.25rem
+  90: 22.5rem,
+  // 22.5rem
+  91: 22.75rem,
+  // 22.75rem
+  92: 23rem,
+  // 23rem
+  93: 23.25rem,
+  // 23.25rem
+  94: 23.5rem,
+  // 23.5rem
+  95: 23.75rem,
+  // 23.75rem
+  97: 24.25rem,
+  // 24.25rem
+  98: 24.5rem,
+  // 24.5rem
+  99: 24.75rem // 24.75rem,,
+);
+
+// Mixin for Width
+@mixin tw-width($width) {
+  width: map-get($tw-values, $width);
+}
+
+// Generate Width Utility Classes
+@each $width, $value in $tw-values {
+  // Convert floating point width values to a valid class name (e.g., 0.5 -> 0-5)
+  $width-class: str-replace("#{ $width }", ".", "-");
+
+  .tw-w-#{$width-class} {
+    @include tw-width($width);
+  }
+}
+
+// Mixin for Height
+@mixin tw-height($height) {
+  height: map-get($tw-values, $height);
+}
+
+// Generate Height Utility Classes
+@each $height, $value in $tw-values {
+  // Convert floating point height values to a valid class name (e.g., 0.5 -> 0-5)
+  $height-class: str-replace("#{ $height }", ".", "-");
+
+  .tw-h-#{$height-class} {
+    @include tw-height($height);
+  }
+}
+
+// Mixin for Margin
+@mixin tw-margin($margin) {
+  margin: map-get($tw-values, $margin);
+}
+
+// Generate Margin Utility Classes
+@each $margin, $value in $tw-values {
+  // Convert floating point margin values to a valid class name (e.g., 0.5 -> 0-5)
+  $margin-class: str-replace("#{ $margin }", ".", "-");
+
+  .tw-m-#{$margin-class} {
+    @include tw-margin($margin);
+  }
+
+  .tw-mx-#{$margin-class} {
+    margin-left: map-get($tw-values, $margin);
+    margin-right: map-get($tw-values, $margin);
+  }
+
+  .tw-my-#{$margin-class} {
+    margin-top: map-get($tw-values, $margin);
+    margin-bottom: map-get($tw-values, $margin);
+  }
+
+  .tw-mt-#{$margin-class} {
+    margin-top: map-get($tw-values, $margin);
+  }
+
+  .tw-mr-#{$margin-class} {
+    margin-right: map-get($tw-values, $margin);
+  }
+
+  .tw-mb-#{$margin-class} {
+    margin-bottom: map-get($tw-values, $margin);
+  }
+
+  .tw-ml-#{$margin-class} {
+    margin-left: map-get($tw-values, $margin);
+  }
+}
+
+// Mixin for Padding
+@mixin tw-padding($padding) {
+  padding: map-get($tw-values, $padding);
+}
+
+// Generate Padding Utility Classes
+@each $padding, $value in $tw-values {
+  // Convert floating point padding values to a valid class name (e.g., 0.5 -> 0-5)
+  $padding-class: str-replace("#{ $padding }", ".", "-");
+
+  .tw-p-#{$padding-class} {
+    @include tw-padding($padding);
+  }
+
+  .tw-px-#{$padding-class} {
+    padding-left: map-get($tw-values, $padding);
+    padding-right: map-get($tw-values, $padding);
+  }
+
+  .tw-py-#{$padding-class} {
+    padding-top: map-get($tw-values, $padding);
+    padding-bottom: map-get($tw-values, $padding);
+  }
+
+  .tw-pt-#{$padding-class} {
+    padding-top: map-get($tw-values, $padding);
+  }
+
+  .tw-pr-#{$padding-class} {
+    padding-right: map-get($tw-values, $padding);
+  }
+
+  .tw-pb-#{$padding-class} {
+    padding-bottom: map-get($tw-values, $padding);
+  }
+
+  .tw-pl-#{$padding-class} {
+    padding-left: map-get($tw-values, $padding);
+  }
+}
+
+//  ******************************  BREAK POINTS CLASSES OF SCSS  ***********************************************************
+// Define Breakpoints
+// $breakpoints: (
+//   sm: 640px,
+//   md: 768px,
+//   lg: 1024px,
+//   xl: 1280px,
+//   xxl: 1536px // Changed 2xl to xxl
+// );
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px // Changed 2xl to xxl,,
+);
+
+// Mixin for Media Queries
+@mixin breakpoint($prefix) {
+  @if map-has-key($breakpoints, $prefix) {
+    $min-width: map-get($breakpoints, $prefix);
+    @media (min-width: #{$min-width}) {
+      @content;
+    }
+  } @else {
+    @warn "No such breakpoint: #{$prefix} in \$breakpoints map";
+  }
+}
+
+// Mixin for Width Utility
+@mixin tw-width($width) {
+  width: map-get($tw-values, $width);
+}
+
+// // Loop for Generating Width Utility Classes
+@each $width, $value in $tw-values {
+  // Ensure $width is a string, then replace dot with a dash
+  $width-string: "#{$width}"; // Convert number to string if it's not one
+  $width-class: str-replace(
+    $width-string,
+    ".",
+    "-"
+  ); // Replace period with dash
+
+  // Base width utility class
+  .tw-w-#{$width-class} {
+    @include tw-width($width);
+  }
+
+  // Add responsive width classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-w-#{$width-class} {
+      @include tw-width($width);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-w-#{$width-class} {
+      @include tw-width($width);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-w-#{$width-class} {
+      @include tw-width($width);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-w-#{$width-class} {
+      @include tw-width($width);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-w-#{$width-class} {
+      @include tw-width($width);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS BORDER OF SCSS  ***********************************************************
+
+// Border Widths
+$tw-borders-widths: (
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px,
+);
+
+@mixin tw-border-width($size) {
+  border-width: map-get($tw-borders-widths, $size);
+}
+
+// Loop for Generating Border Width Utility Classes
+@each $size, $width in $tw-borders-widths {
+  .tw-border-#{$size} {
+    @include tw-border-width($size);
+  }
+
+  // Add responsive border width classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-border-#{$size} {
+      @include tw-border-width($size);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-border-#{$size} {
+      @include tw-border-width($size);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-border-#{$size} {
+      @include tw-border-width($size);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-border-#{$size} {
+      @include tw-border-width($size);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-border-#{$size} {
+      @include tw-border-width($size);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS OUTLINE WIDTH OF SCSS  ***********************************************************
+
+// Outline Widths
+$tw-outlines-widths: (
+  0: 0,
+  2: 2px,
+  4: 4px,
+  8: 8px,
+);
+
+@mixin tw-outline-width($size) {
+  outline-width: map-get($tw-outlines-widths, $size);
+}
+
+// Loop for Generating Outline Width Utility Classes
+@each $size, $width in $tw-outlines-widths {
+  .tw-outline-#{$size} {
+    @include tw-outline-width($size);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-outline-#{$size} {
+      @include tw-outline-width($size);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-outline-#{$size} {
+      @include tw-outline-width($size);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-outline-#{$size} {
+      @include tw-outline-width($size);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-outline-#{$size} {
+      @include tw-outline-width($size);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-outline-#{$size} {
+      @include tw-outline-width($size);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS OUTLINE COLORS OF SCSS  ***********************************************************
+
+// Outline Colors
+$tw-outlines-colors: (
+  transparent: transparent,
+  current: currentColor,
+  black: #000,
+  white: #fff,
+  gray-500: #6b7280,
+  red-500: #ef4444,
+  green-500: #10b981,
+  blue-500: #3b82f6,
+);
+
+@mixin tw-outline-color($color) {
+  outline-color: map-get($tw-outlines-colors, $color);
+}
+
+// Loop for Generating Outline Colors
+@each $color, $value in $tw-outlines-colors {
+  .tw-outline-#{$color} {
+    @include tw-outline-color($color);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-outline-#{$color} {
+      @include tw-outline-color($color);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-outline-#{$color} {
+      @include tw-outline-color($color);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-outline-#{$color} {
+      @include tw-outline-color($color);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-outline-#{$color} {
+      @include tw-outline-color($color);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-outline-#{$color} {
+      @include tw-outline-color($color);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS BORDER COLORS OF SCSS  ***********************************************************
+
+// Border Colors
+$tw-border-colors: (
+  transparent: transparent,
+  current: currentColor,
+  black: #000,
+  white: #fff,
+  gray-500: #6b7280,
+  red-500: #ef4444,
+  green-500: #10b981,
+  blue-500: #3b82f6,
+);
+
+@mixin tw-border-color($color) {
+  border-color: map-get($tw-border-colors, $color);
+}
+
+// Loop for Generating Border Colors
+@each $color, $value in $tw-border-colors {
+  .tw-border-#{$color} {
+    @include tw-border-color($color);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-border-#{$color} {
+      @include tw-border-color($color);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-border-#{$color} {
+      @include tw-border-color($color);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-border-#{$color} {
+      @include tw-border-color($color);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-border-#{$color} {
+      @include tw-border-color($color);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-border-#{$color} {
+      @include tw-border-color($color);
+    }
+  }
+}
+
+// *************************************************************** TW BORDER RADIUS CLASSES ***************************************
+
+// Define border-radius values
+$tw-border-radius: (
+  none: 0px,
+  sm: 0.125rem,
+  // 2px
+  default: 0.25rem,
+  // 4px
+  md: 0.375rem,
+  // 6px
+  lg: 0.5rem,
+  // 8px
+  xl: 0.75rem,
+  // 12px
+  "2xl": 1rem,
+  // 16px
+  "3xl": 1.5rem,
+  // 24px
+  full: 9999px,
+);
+
+// Custom variables for different border-radius parts
+$tw-border-radius-start: $tw-border-radius;
+$tw-border-radius-end: $tw-border-radius;
+$tw-border-radius-top: $tw-border-radius;
+$tw-border-radius-bottom: $tw-border-radius;
+
+// Mixin for Border Radius
+@mixin tw-border-radius($radius) {
+  border-radius: map-get($tw-border-radius, $radius);
+}
+
+// Generate Border Radius Utility Classes
+@each $radius, $value in $tw-border-radius {
+  .tw-rounded-#{$radius} {
+    @include tw-border-radius($radius);
+  }
+}
+
+// Generate Start Border Radius Classes
+@each $radius, $value in $tw-border-radius-start {
+  .tw-rounded-s-#{$radius} {
+    border-start-start-radius: map-get($tw-border-radius-start, $radius);
+    border-end-start-radius: map-get($tw-border-radius-start, $radius);
+  }
+}
+
+// Generate End Border Radius Classes
+@each $radius, $value in $tw-border-radius-end {
+  .tw-rounded-e-#{$radius} {
+    border-start-end-radius: map-get($tw-border-radius-end, $radius);
+    border-end-end-radius: map-get($tw-border-radius-end, $radius);
+  }
+}
+
+// Generate Top Border Radius Classes
+@each $radius, $value in $tw-border-radius-top {
+  .tw-rounded-t-#{$radius} {
+    border-top-left-radius: map-get($tw-border-radius-top, $radius);
+    border-top-right-radius: map-get($tw-border-radius-top, $radius);
+  }
+}
+
+// Generate Bottom Border Radius Classes
+@each $radius, $value in $tw-border-radius-bottom {
+  .tw-rounded-b-#{$radius} {
+    border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+    border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+  }
+}
+
+// Loop for Generating Border Radius Classes
+@each $radius, $value in $tw-border-radius {
+  .tw-rounded-#{$radius} {
+    @include tw-border-radius($radius);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-rounded-#{$radius} {
+      @include tw-border-radius($radius);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-rounded-#{$radius} {
+      @include tw-border-radius($radius);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-rounded-#{$radius} {
+      @include tw-border-radius($radius);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-rounded-#{$radius} {
+      @include tw-border-radius($radius);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    // Changed 2xl to xxl
+    .xxl\:tw-rounded-#{$radius} {
+      @include tw-border-radius($radius);
+    }
+  }
+}
+
+// Generate responsive Start Border Radius Classes
+@each $radius, $value in $tw-border-radius-start {
+  .tw-rounded-s-#{$radius} {
+    border-start-start-radius: map-get($tw-border-radius-start, $radius);
+    border-end-start-radius: map-get($tw-border-radius-start, $radius);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-rounded-s-#{$radius} {
+      border-start-start-radius: map-get($tw-border-radius-start, $radius);
+      border-end-start-radius: map-get($tw-border-radius-start, $radius);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-rounded-s-#{$radius} {
+      border-start-start-radius: map-get($tw-border-radius-start, $radius);
+      border-end-start-radius: map-get($tw-border-radius-start, $radius);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-rounded-s-#{$radius} {
+      border-start-start-radius: map-get($tw-border-radius-start, $radius);
+      border-end-start-radius: map-get($tw-border-radius-start, $radius);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-rounded-s-#{$radius} {
+      border-start-start-radius: map-get($tw-border-radius-start, $radius);
+      border-end-start-radius: map-get($tw-border-radius-start, $radius);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-rounded-s-#{$radius} {
+      border-start-start-radius: map-get($tw-border-radius-start, $radius);
+      border-end-start-radius: map-get($tw-border-radius-start, $radius);
+    }
+  }
+}
+
+// Generate responsive End Border Radius Classes
+@each $radius, $value in $tw-border-radius-end {
+  .tw-rounded-e-#{$radius} {
+    border-start-end-radius: map-get($tw-border-radius-end, $radius);
+    border-end-end-radius: map-get($tw-border-radius-end, $radius);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-rounded-e-#{$radius} {
+      border-start-end-radius: map-get($tw-border-radius-end, $radius);
+      border-end-end-radius: map-get($tw-border-radius-end, $radius);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-rounded-e-#{$radius} {
+      border-start-end-radius: map-get($tw-border-radius-end, $radius);
+      border-end-end-radius: map-get($tw-border-radius-end, $radius);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-rounded-e-#{$radius} {
+      border-start-end-radius: map-get($tw-border-radius-end, $radius);
+      border-end-end-radius: map-get($tw-border-radius-end, $radius);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-rounded-e-#{$radius} {
+      border-start-end-radius: map-get($tw-border-radius-end, $radius);
+      border-end-end-radius: map-get($tw-border-radius-end, $radius);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-rounded-e-#{$radius} {
+      border-start-end-radius: map-get($tw-border-radius-end, $radius);
+      border-end-end-radius: map-get($tw-border-radius-end, $radius);
+    }
+  }
+}
+
+// Generate responsive Top Border Radius Classes
+@each $radius, $value in $tw-border-radius-top {
+  .tw-rounded-t-#{$radius} {
+    border-top-left-radius: map-get($tw-border-radius-top, $radius);
+    border-top-right-radius: map-get($tw-border-radius-top, $radius);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-rounded-t-#{$radius} {
+      border-top-left-radius: map-get($tw-border-radius-top, $radius);
+      border-top-right-radius: map-get($tw-border-radius-top, $radius);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-rounded-t-#{$radius} {
+      border-top-left-radius: map-get($tw-border-radius-top, $radius);
+      border-top-right-radius: map-get($tw-border-radius-top, $radius);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-rounded-t-#{$radius} {
+      border-top-left-radius: map-get($tw-border-radius-top, $radius);
+      border-top-right-radius: map-get($tw-border-radius-top, $radius);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-rounded-t-#{$radius} {
+      border-top-left-radius: map-get($tw-border-radius-top, $radius);
+      border-top-right-radius: map-get($tw-border-radius-top, $radius);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-rounded-t-#{$radius} {
+      border-top-left-radius: map-get($tw-border-radius-top, $radius);
+      border-top-right-radius: map-get($tw-border-radius-top, $radius);
+    }
+  }
+}
+
+// Generate responsive Bottom Border Radius Classes
+@each $radius, $value in $tw-border-radius-bottom {
+  .tw-rounded-b-#{$radius} {
+    border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+    border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+  }
+
+  // Add responsive classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-rounded-b-#{$radius} {
+      border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+      border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-rounded-b-#{$radius} {
+      border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+      border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-rounded-b-#{$radius} {
+      border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+      border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-rounded-b-#{$radius} {
+      border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+      border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-rounded-b-#{$radius} {
+      border-bottom-left-radius: map-get($tw-border-radius-bottom, $radius);
+      border-bottom-right-radius: map-get($tw-border-radius-bottom, $radius);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS BACKGROUND SIZES OF SCSS  ***********************************************************
+
+// Background Size Types
+$tw-bg-sizes: (
+  auto: auto,
+  cover: cover,
+  contain: contain,
+);
+
+@mixin tw-bg-size($size) {
+  background-size: $size;
+}
+
+// Loop for Generating Background Size Utility Classes
+@each $size, $value in $tw-bg-sizes {
+  .tw-bg-size-#{$size} {
+    @include tw-bg-size($value);
+  }
+
+  // Add responsive background size classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-bg-size-#{$size} {
+      @include tw-bg-size($value);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-bg-size-#{$size} {
+      @include tw-bg-size($value);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-bg-size-#{$size} {
+      @include tw-bg-size($value);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-bg-size-#{$size} {
+      @include tw-bg-size($value);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-bg-size-#{$size} {
+      @include tw-bg-size($value);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS BACKGROUND POSITIONS OF SCSS  ***********************************************************
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+// Background Position Types
+$tw-bg-positions: (
+  "center": center,
+  "top": top,
+  "top-left": "top left",
+  "top-right": "top right",
+  "bottom": bottom,
+  "bottom-left": "bottom left",
+  "bottom-right": "bottom right",
+  "left": left,
+  "right": right,
+);
+
+@mixin tw-bg-position($position) {
+  background-position: $position;
+}
+
+// Loop for Generating Background Position Utility Classes
+@each $position, $value in $tw-bg-positions {
+  .tw-bg-position-#{$position} {
+    @include tw-bg-position($value);
+  }
+
+  // Add responsive background position classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-bg-position-#{$position} {
+      @include tw-bg-position($value);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-bg-position-#{$position} {
+      @include tw-bg-position($value);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-bg-position-#{$position} {
+      @include tw-bg-position($value);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-bg-position-#{$position} {
+      @include tw-bg-position($value);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-bg-position-#{$position} {
+      @include tw-bg-position($value);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS z INDEXES OF SCSS  ***********************************************************
+
+// Z-Index Values
+$tw-z-indexes: (
+  "-10": -10,
+  "-5": -5,
+  "-1": -1,
+  0: 0,
+  1: 1,
+  2: 2,
+  10: 10,
+  20: 20,
+  50: 50,
+  100: 100,
+  1000: 1000,
+);
+
+@mixin tw-z-index($value) {
+  z-index: $value;
+}
+
+// Loop for Generating Z-Index Utility Classes
+@each $value, $z-index in $tw-z-indexes {
+  .tw-z-#{$value} {
+    @include tw-z-index($z-index);
+  }
+
+  // Add responsive z-index classes for each breakpoint
+  @include breakpoint(sm) {
+    .sm\:tw-z-#{$value} {
+      @include tw-z-index($z-index);
+    }
+  }
+
+  @include breakpoint(md) {
+    .md\:tw-z-#{$value} {
+      @include tw-z-index($z-index);
+    }
+  }
+
+  @include breakpoint(lg) {
+    .lg\:tw-z-#{$value} {
+      @include tw-z-index($z-index);
+    }
+  }
+
+  @include breakpoint(xl) {
+    .xl\:tw-z-#{$value} {
+      @include tw-z-index($z-index);
+    }
+  }
+
+  @include breakpoint(xxl) {
+    .xxl\:tw-z-#{$value} {
+      @include tw-z-index($z-index);
+    }
+  }
+}
+
+//  ******************************  BREAK POINTS BACKGROUND POSITIONS OF SCSS  ***********************************************************
+//  ******************************  BREAK POINTS BACKGROUND POSITIONS OF SCSS  ***********************************************************
